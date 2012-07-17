@@ -1,12 +1,16 @@
+" Overall
 set bg=dark
 syntax on
 set title
 set nocompatible
 
-" spacing
+" spacing, indenting
+set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 set shiftwidth=2
 set tabstop=4
 set expandtab
+set autoindent
+set smartindent
 
 "search
 set incsearch
