@@ -1,10 +1,31 @@
-" Overall
+""" Overall
 set bg=dark
 syntax on
 set title
 set nocompatible
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+" enable filetype detection:
+filetype on
+filetype plugin on
+filetype indent on
+" Set to auto read when a file is changed from the outside
+set autoread
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+" Status line
+set laststatus=2
+set statusline=%F%m%r%h%w\ \ [%l,%v][%p%%]
 
-" spacing, indenting
+""" Settings for tab auto completion of files
+set wildmode=longest:full
+set wildmenu
+" Ignore compiled files
+set wildignore=*.pyc
+
+""" spacing, indenting
+" Put special characaters in when tabs, leading, or trailing space are found.
 set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 set shiftwidth=2
 set tabstop=4
@@ -12,9 +33,12 @@ set expandtab
 set autoindent
 set smartindent
 
-"search
+""" search
 set incsearch
+" respect case, but only if first letter is upper case
 set smartcase
+" Highlight search results
+set hlsearch
 
 augroup filetypedetect
     au! BufRead,BufNewFile *.pp     setfiletype puppet
@@ -40,15 +64,12 @@ autocmd BufWritePost *.xsl !xmllint --noout <afile>
 autocmd BufWritePost *.css !test -f ~/src/csstidy/csslint.php && php ~/csstidy/csslint.php <afile>
 " get jslint from http://javascriptlint.com/
 autocmd BufWritePost *.js !test -f ~/src/jslint/jsl && ~/src/jslint/jsl -conf ~/.jsl.conf -nologo -nosummary -process <afile>
-"autocmd BufWritePost *.js !test -f /usr/local/bin/gjslint && /usr/local/bin/gjslint <afile>
 autocmd BufWritePost *.rb !ruby -c <afile>
 autocmd BufWritePost *.pp !puppet --parseonly <afile>
 autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
 autocmd BufWritePost *.py !pyflakes <afile>
 augroup en
 
-" enable filetype detection:
-filetype on
 
 " my common spelling mistakes ;)
 abbreviate wierd weird
