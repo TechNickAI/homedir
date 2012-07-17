@@ -1,4 +1,7 @@
 .bash_history
+.bash_logout
+.bashrc
+.history_bash
 .cache/
 .config/
 .forever/
@@ -8,8 +11,12 @@
 .npm/
 .pip/
 .s3cfg
-.ssh/id_rsa
+.ssh/
+.sudo_as_admin_successful
 .viminfo
+.vim/
 #	csstidy/
 #	jslint/
+files/
 src/
+tmp/
