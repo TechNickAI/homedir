@@ -1,0 +1,15 @@
+.bash_history
+.cache/
+.config/
+.forever/
+.gitconfig
+.*.swp
+.mysql_history
+.npm/
+.pip/
+.s3cfg
+.ssh/id_rsa
+.viminfo
+#	csstidy/
+#	jslint/
+src/
