@@ -1,8 +1,8 @@
 """ Overall
-set bg=dark
 syntax on
 set title
 set nocompatible
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " enable filetype detection:
@@ -17,6 +17,13 @@ set novisualbell
 " Status line
 set laststatus=2
 set statusline=%F%m%r%h%w\ \ [%l,%v][%p%%]
+
+""" Colors
+set bg=dark
+"http://ethanschoonover.com/solarized
+set t_Co=256
+let g:solarized_termcolors=256
+colorscheme solarized
 
 """ Settings for tab auto completion of files
 set wildmode=longest:full
