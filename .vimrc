@@ -5,10 +5,12 @@ set nocompatible
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
-" enable filetype detection:
+" enable filetype detection
 filetype on
 filetype plugin on
 filetype indent on
+" Optimize for fast connections
+set ttyfast
 " Set to auto read when a file is changed from the outside
 set autoread
 " No annoying sound on errors
@@ -33,9 +35,10 @@ set wildignore=*.pyc
 
 """ spacing, indenting
 " Put special characaters in when tabs, leading, or trailing space are found.
-set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
-set shiftwidth=2
+set list listchars=tab:▸\ ,trail:⋅,nbsp:⋅
+set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 set expandtab
 set autoindent
 set smartindent
@@ -46,6 +49,11 @@ set incsearch
 set smartcase
 " Highlight search results
 set hlsearch
+set scrolloff=5
+
+" Working with split screen nicely
+" Resize Split When the window is resized
+au VimResized * :wincmd =
 
 augroup filetypedetect
     au! BufRead,BufNewFile *.pp     setfiletype puppet
