@@ -3,6 +3,10 @@ syntax on
 set title
 set nocompatible
 
+" Pathogen for auto loading modules
+" https://github.com/tpope/vim-pathogen
+call pathogen#infect()
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " enable filetype detection
