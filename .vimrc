@@ -53,7 +53,7 @@ set wildignore=*.pyc
 """ spacing, indenting
 " Put special characaters in when tabs, leading, or trailing space are found.
 set list listchars=tab:▸\ ,trail:⋅,nbsp:⋅
-set shiftwidth=4
+set shiftwidth=2
 set tabstop=4
 set softtabstop=4
 set expandtab
