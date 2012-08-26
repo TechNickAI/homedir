@@ -7,6 +7,19 @@ set nocompatible
 " https://github.com/tpope/vim-pathogen
 call pathogen#infect()
 
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_auto_loc_list=2
+" Syntax checker installations...
+" sudo apt-get install pyflakes
+" sudo apt-get install tidy
+" sudo npm install -g csslint
+" Full list here: https://github.com/scrooloose/syntastic/tree/master/syntax_checkers
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " enable filetype detection
@@ -39,7 +52,7 @@ set wildignore=*.pyc
 """ spacing, indenting
 " Put special characaters in when tabs, leading, or trailing space are found.
 set list listchars=tab:▸\ ,trail:⋅,nbsp:⋅
-set shiftwidth=4
+set shiftwidth=2
 set tabstop=4
 set softtabstop=4
 set expandtab
@@ -66,28 +79,28 @@ augroup filetypedetect
 augroup END
 
 " Nick wrote: Uncomment these lines to do syntax checking when you save
-augroup Programming
+"augroup Programming
 " clear auto commands for this group
-autocmd!
-autocmd BufWritePost *.php !php -d display_errors=on -l <afile>
-autocmd BufWritePost *.inc !php -d display_errors=on -l <afile>
-autocmd BufWritePost *httpd*.conf !/etc/rc.d/init.d/httpd configtest
-autocmd BufWritePost *.bash !bash -n <afile>
-autocmd BufWritePost *.sh !bash -n <afile>
-autocmd BufWritePost *.pl !perl -c <afile>
-autocmd BufWritePost *.perl !perl -c <afile>
-autocmd BufWritePost *.xml !xmllint --noout <afile>
-autocmd BufWritePost *.rdf !xmllint --noout <afile>
-autocmd BufWritePost *.xsl !xmllint --noout <afile>
-" get csstidy from http://csstidy.sourceforge.net/
-autocmd BufWritePost *.css !test -f ~/src/csstidy/csslint.php && php ~/csstidy/csslint.php <afile>
+"autocmd!
+"autocmd BufWritePost *.php !php -d display_errors=on -l <afile>
+"autocmd BufWritePost *.inc !php -d display_errors=on -l <afile>
+"autocmd BufWritePost *httpd*.conf !/etc/rc.d/init.d/httpd configtest
+"autocmd BufWritePost *.bash !bash -n <afile>
+"autocmd BufWritePost *.sh !bash -n <afile>
+"autocmd BufWritePost *.pl !perl -c <afile>
+"autocmd BufWritePost *.perl !perl -c <afile>
+"autocmd BufWritePost *.xml !xmllint --noout <afile>
+"autocmd BufWritePost *.rdf !xmllint --noout <afile>
+"autocmd BufWritePost *.xsl !xmllint --noout <afile>
+"" get csstidy from http://csstidy.sourceforge.net/
+"autocmd BufWritePost *.css !test -f ~/src/csstidy/csslint.php && php ~/csstidy/csslint.php <afile>
 " get jslint from http://javascriptlint.com/
 autocmd BufWritePost *.js !test -f ~/src/jslint/jsl && ~/src/jslint/jsl -conf ~/.jsl.conf -nologo -nosummary -process <afile>
-autocmd BufWritePost *.rb !ruby -c <afile>
-autocmd BufWritePost *.pp !puppet --parseonly <afile>
-autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
-autocmd BufWritePost *.py !pyflakes <afile>
-augroup en
+"autocmd BufWritePost *.rb !ruby -c <afile>
+"autocmd BufWritePost *.pp !puppet --parseonly <afile>
+"autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
+"autocmd BufWritePost *.py !pyflakes <afile>
+"augroup en
 
 
 " my common spelling mistakes ;)
