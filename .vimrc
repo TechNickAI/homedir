@@ -23,9 +23,8 @@ let g:syntastic_auto_loc_list=2
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " enable filetype detection
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
+
 " Optimize for fast connections
 set ttyfast
 " Set to auto read when a file is changed from the outside
@@ -76,6 +75,7 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.pp     setfiletype puppet
     au! BufRead,BufNewFile *httpd*.conf     setfiletype apache
     au! BufRead,BufNewFile *inc     setfiletype php
+    au! BufRead,BufNewFile *.json setfiletype javascript
 augroup END
 
 " Nick wrote: Uncomment these lines to do syntax checking when you save
