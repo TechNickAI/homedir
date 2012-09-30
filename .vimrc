@@ -52,12 +52,12 @@ set wildignore=*.pyc
 """ spacing, indenting
 " Put special characaters in when tabs, leading, or trailing space are found.
 set list listchars=tab:▸\ ,trail:⋅,nbsp:⋅
-set shiftwidth=2
+set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
-set autoindent
-set smartindent
+"set autoindent
+"set smartindent
 
 """ search
 set incsearch
@@ -99,7 +99,7 @@ autocmd BufWritePost *.js !test -f ~/src/jslint/jsl && ~/src/jslint/jsl -conf ~/
 "autocmd BufWritePost *.rb !ruby -c <afile>
 "autocmd BufWritePost *.pp !puppet --parseonly <afile>
 "autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
-"autocmd BufWritePost *.py !pyflakes <afile>
+autocmd BufWritePost *.py !pyflakes <afile>
 "augroup en
 
 
