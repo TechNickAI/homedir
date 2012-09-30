@@ -22,12 +22,13 @@ if [ "$MAX_DAYS" != "" ] ; then
 fi
 
 # Read in history from the previous history files, up until we hit HISTSIZE
+histtemp=`mktemp /tmp/hist.XXXXXXXX`
+touch $histtemp
 for file in `ls -1tr $bash_hist`; do
-    history -r $bash_hist/$file
-    if [ `history | wc -l` -gt $HISTSIZE ] ; then
-        break
-    fi
+    cat $bash_hist/$file >> $histtemp
 done
+history -r $histtemp
+rm $histtemp
 
 ########### Always use vim
 export SVN_EDITOR=`which vim`
