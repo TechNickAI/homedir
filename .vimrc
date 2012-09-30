@@ -23,7 +23,9 @@ let g:syntastic_auto_loc_list=2
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " enable filetype detection
-filetype plugin indent on
+filetype on
+filetype plugin on
+filetype indent on
 
 " Optimize for fast connections
 set ttyfast
