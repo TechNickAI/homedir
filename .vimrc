@@ -1,11 +1,13 @@
-""" Overall
-syntax on
-set title
-set nocompatible
-
 " Pathogen for auto loading modules
 " https://github.com/tpope/vim-pathogen
 call pathogen#infect()
+
+""" Overall
+syntax on
+filetype plugin indent on
+set title
+set nocompatible
+
 
 " Syntastic settings
 set statusline+=%#warningmsg#
@@ -23,9 +25,6 @@ let g:syntastic_auto_loc_list=2
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " enable filetype detection
-filetype on
-filetype plugin on
-filetype indent on
 
 " Optimize for fast connections
 set ttyfast
