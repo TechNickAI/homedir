@@ -14,7 +14,7 @@
 .ssh/
 .sudo_as_admin_successful
 .viminfo
-.vim/.netrwhist
+.vim/.netrwhist*
 #	csstidy/
 #	jslint/
 files/

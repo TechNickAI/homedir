@@ -69,6 +69,17 @@ set smartcase
 set hlsearch
 set scrolloff=5
 
+""" Stop bringing up help when I accidentally hit f1
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+
+set wrap
+set textwidth=99
+set colorcolumn=105
+
+
 " Working with split screen nicely
 " Resize Split When the window is resized
 au VimResized * :wincmd =
