@@ -74,7 +74,7 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-
+""" wrapping. put a market at 105 characters
 set wrap
 set textwidth=99
 set colorcolumn=105
@@ -108,11 +108,11 @@ augroup END
 "" get csstidy from http://csstidy.sourceforge.net/
 "autocmd BufWritePost *.css !test -f ~/src/csstidy/csslint.php && php ~/csstidy/csslint.php <afile>
 " get jslint from http://javascriptlint.com/
-autocmd BufWritePost *.js !test -f ~/src/jslint/jsl && ~/src/jslint/jsl -conf ~/.jsl.conf -nologo -nosummary -process <afile>
+" autocmd BufWritePost *.js !test -f ~/src/jslint/jsl && ~/src/jslint/jsl -conf ~/.jsl.conf -nologo -nosummary -process <afile>
 "autocmd BufWritePost *.rb !ruby -c <afile>
 "autocmd BufWritePost *.pp !puppet --parseonly <afile>
 "autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
-autocmd BufWritePost *.py !pyflakes <afile>
+" autocmd BufWritePost *.py !pyflakes <afile>
 "augroup en
 
 
