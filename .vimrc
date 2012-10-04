@@ -10,12 +10,15 @@ set nocompatible
 
 
 " Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
-let g:syntastic_auto_loc_list=2
+let g:syntastic_auto_loc_list=1
+let g:syntastic_echo_current_error=1
+let g:syntastic_loc_list_height=2
+
 " Syntax checker installations...
 " sudo apt-get install pyflakes
 " sudo apt-get install tidy
