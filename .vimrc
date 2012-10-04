@@ -77,8 +77,6 @@ vnoremap <F1> <ESC>
 """ wrapping. put a market at 105 characters
 set wrap
 set textwidth=99
-set colorcolumn=105
-
 
 " Working with split screen nicely
 " Resize Split When the window is resized
