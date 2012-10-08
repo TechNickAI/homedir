@@ -88,7 +88,6 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.pp     setfiletype puppet
     au! BufRead,BufNewFile *httpd*.conf     setfiletype apache
     au! BufRead,BufNewFile *inc     setfiletype php
-    au! BufRead,BufNewFile *.json setfiletype javascript
 augroup END
 
 " Nick wrote: Uncomment these lines to do syntax checking when you save
@@ -109,6 +108,7 @@ augroup END
 "autocmd BufWritePost *.css !test -f ~/src/csstidy/csslint.php && php ~/csstidy/csslint.php <afile>
 " get jslint from http://javascriptlint.com/
 " autocmd BufWritePost *.js !test -f ~/src/jslint/jsl && ~/src/jslint/jsl -conf ~/.jsl.conf -nologo -nosummary -process <afile>
+autocmd BufWritePost *.json !node -e "var fs=require('fs'), contents = fs.readFileSync('<afile>').toString(); try { JSON.parse(contents); } catch(e) { console.log(e) }"
 "autocmd BufWritePost *.rb !ruby -c <afile>
 "autocmd BufWritePost *.pp !puppet --parseonly <afile>
 "autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
