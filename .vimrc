@@ -10,14 +10,14 @@ set nocompatible
 
 
 " Syntastic settings
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
-let g:syntastic_auto_loc_list=1
+"let g:syntastic_auto_loc_list=1
 let g:syntastic_echo_current_error=1
-let g:syntastic_loc_list_height=2
+"let g:syntastic_loc_list_height=2
 
 " Syntax checker installations...
 " sudo apt-get install pyflakes
@@ -108,7 +108,6 @@ augroup END
 "autocmd BufWritePost *.css !test -f ~/src/csstidy/csslint.php && php ~/csstidy/csslint.php <afile>
 " get jslint from http://javascriptlint.com/
 " autocmd BufWritePost *.js !test -f ~/src/jslint/jsl && ~/src/jslint/jsl -conf ~/.jsl.conf -nologo -nosummary -process <afile>
-autocmd BufWritePost *.json !node -e "var fs=require('fs'), contents = fs.readFileSync('<afile>').toString(); try { JSON.parse(contents); } catch(e) { console.log(e) }"
 "autocmd BufWritePost *.rb !ruby -c <afile>
 "autocmd BufWritePost *.pp !puppet --parseonly <afile>
 "autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
