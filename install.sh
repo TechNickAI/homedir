@@ -1,4 +1,6 @@
 #!/bin/bash
+#### Script to set up symlinks from ~/ to ~/homedir,
+#### elegantly dealing with ones that may already be there, and backing up the existing.
 
 # Abort on error
 set -e
