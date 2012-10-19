@@ -1,22 +1,4 @@
-.bash_history
-.bash_logout
-.bashrc
-.history_bash
-.cache/
-.config/
-.forever/
-.gitconfig
 .*.swp
-.mysql_history
-.npm/
-.pip/
-.s3cfg
-.ssh/
-.sudo_as_admin_successful
-.viminfo
-.vim/.netrwhist*
-#	csstidy/
-#	jslint/
-files/
-src/
-tmp/
+.vim/.netrwhist
+.homedir_last_update
+.homedir_no_update
