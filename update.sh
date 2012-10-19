@@ -37,7 +37,7 @@ if [ "$local_version" != "$remote_version" ] ; then
     read -e update
     if [ "$update" == "yes" ] ; then
         git pull
-        ./install.sh
+        ./setup.sh
 
     else
         echo "Skipping update for now."
