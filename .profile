@@ -33,3 +33,6 @@ rm $histtemp
 ########### Always use vim
 export SVN_EDITOR=`which vim`
 export EDITOR=`which vim`
+
+# Auto update
+~/homedir/update.sh
