@@ -76,10 +76,6 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-""" wrapping. put a market at 105 characters
-set wrap
-set textwidth=99
-
 " Working with split screen nicely
 " Resize Split When the window is resized
 au VimResized * :wincmd =
