@@ -31,13 +31,23 @@ else
     RESET="\033[m"
 fi
 
-function usernamehost() {
+function bashprompt() {
+    lastexit="$?"
+    # Put root@ at the begining if we are root
     if [ "`whoami`" == "root" ]; then
-        echo ${PURPLE}root${RESET}@$HOSTNAME
+        username="${PURPLE}root${RESET}@"
     else
-        echo $HOSTNAME
+        username=""
     fi
+    # If the last command was a failure, put the hostname in orange
+    if [ $lastexit -eq 0 ] ; then
+        stat=""
+    else
+        stat="${ORANGE}✗${RESET} "
+    fi
+    PS1="$stat$username\h:\w\$ "
 }
 
-PS1="$(usernamehost):\w$ "
+
+PROMPT_COMMAND=bashprompt
 
