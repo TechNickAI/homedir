@@ -59,7 +59,7 @@ function bashprompt() {
     else
         git=" on $(parse_git_status)"
     fi
-    PS1="$stat$username\h:\w$git\$ "
+    PS1="$stat$username\h:\w$git$MAGENTA\$$RESET "
 }
 
 
