@@ -30,9 +30,12 @@ done
 history -r $histtemp
 rm $histtemp
 
-########### Always use vim
+# Always use vim
 export SVN_EDITOR=`which vim`
 export EDITOR=`which vim`
 
 # Auto update
 ~/homedir/update.sh
+
+## Bash prompt
+source ~/homedir/.bash_prompt
