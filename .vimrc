@@ -15,19 +15,17 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
-"let g:syntastic_auto_loc_list=1
 let g:syntastic_echo_current_error=1
-"let g:syntastic_loc_list_height=2
 
 " Syntax checker installations...
 " sudo apt-get install pyflakes
 " sudo apt-get install tidy
-" sudo npm install -g csslint
+" sudo npm install csslint -g
+" sudo npm install jsonlint -g
 " Full list here: https://github.com/scrooloose/syntastic/tree/master/syntax_checkers
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
-" enable filetype detection
 
 " Optimize for fast connections
 set ttyfast
@@ -80,37 +78,7 @@ vnoremap <F1> <ESC>
 " Resize Split When the window is resized
 au VimResized * :wincmd =
 
-augroup filetypedetect
-    au! BufRead,BufNewFile *.pp     setfiletype puppet
-    au! BufRead,BufNewFile *httpd*.conf     setfiletype apache
-    au! BufRead,BufNewFile *inc     setfiletype php
-augroup END
-
-" Nick wrote: Uncomment these lines to do syntax checking when you save
-"augroup Programming
-" clear auto commands for this group
-"autocmd!
-"autocmd BufWritePost *.php !php -d display_errors=on -l <afile>
-"autocmd BufWritePost *.inc !php -d display_errors=on -l <afile>
-"autocmd BufWritePost *httpd*.conf !/etc/rc.d/init.d/httpd configtest
-"autocmd BufWritePost *.bash !bash -n <afile>
-"autocmd BufWritePost *.sh !bash -n <afile>
-"autocmd BufWritePost *.pl !perl -c <afile>
-"autocmd BufWritePost *.perl !perl -c <afile>
-"autocmd BufWritePost *.xml !xmllint --noout <afile>
-"autocmd BufWritePost *.rdf !xmllint --noout <afile>
-"autocmd BufWritePost *.xsl !xmllint --noout <afile>
-"" get csstidy from http://csstidy.sourceforge.net/
-"autocmd BufWritePost *.css !test -f ~/src/csstidy/csslint.php && php ~/csstidy/csslint.php <afile>
-" get jslint from http://javascriptlint.com/
-" autocmd BufWritePost *.js !test -f ~/src/jslint/jsl && ~/src/jslint/jsl -conf ~/.jsl.conf -nologo -nosummary -process <afile>
-"autocmd BufWritePost *.rb !ruby -c <afile>
-"autocmd BufWritePost *.pp !puppet --parseonly <afile>
-"autocmd BufWritePost *.erb !erb -x -T '-' <afile> | ruby -c 
-" autocmd BufWritePost *.py !pyflakes <afile>
-"augroup en
-
-
 " my common spelling mistakes ;)
 abbreviate wierd weird
 abbreviate restaraunt restaurant
+abbreviate garauntee guarantee
