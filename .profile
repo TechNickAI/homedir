@@ -39,3 +39,9 @@ export EDITOR=`which vim`
 
 ## Bash prompt
 source ~/homedir/.bash_prompt
+
+# some useful git aliases
+alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
+alias gw='git diff --color-words'
+alias gb='git diff --word-diff'
+
