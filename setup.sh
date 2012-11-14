@@ -6,7 +6,7 @@
 set -e
 
 cd ~
-for file in .vimrc .vim .selected_editor .profile .hushlogin ; do
+for file in .vimrc .vim .selected_editor .profile .hushlogin .jshintrc ; do
   if [ -h $file ] ; then
     # File is already a symbolic link
     echo "Symlink for $file is already there"
