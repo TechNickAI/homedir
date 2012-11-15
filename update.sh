@@ -32,15 +32,16 @@ if [ $? -eq 0 ] ; then
     touch $last_update
 fi
 
-if [ "$local_version" != "$remote_version" ] ; then
-    echo "The remote version of $repo is $remote_version, yours is $local_version. Update? (yes/no)"
-    read -e update
-    if [ "$update" == "yes" ] ; then
-        git pull
-        ./setup.sh
+if [ "$local_version" == "$remote_version" ] ; then
+    exit
+fi
 
-    else
-        echo "Skipping update for now."
-        echo "If you want to disable this check, then run 'touch $PWD/.homedir_no_update'"
-    fi
+echo "The remote version of $repo is $remote_version, yours is $local_version. Update? (yes/no)"
+read -e update
+if [ "$update" == "yes" ] ; then
+    git pull
+    ./setup.sh
+else
+    echo "Skipping update for now."
+    echo "If you want to disable this check, then run 'touch $PWD/.homedir_no_update'"
 fi
