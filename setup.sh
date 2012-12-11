@@ -20,3 +20,22 @@ for file in .vimrc .vim .selected_editor .profile .hushlogin .jshintrc ; do
   echo "Creating symlink for $file"
   ln -s homedir/$file
 done
+
+set +e
+
+function checkExe() {
+    loc=`which $1`
+    if [ "$?" != "0" ] ; then
+        echo
+        echo "$1 NOT found, install with '$2'"
+    else
+        echo -n "."
+    fi
+}
+echo "Checking for programs required for syntax checking"
+checkExe jshint "sudo npm install jshint -g"
+checkExe pyflakes "sudo apt-get install pyflakes"
+checkExe xmllint "sudo apt-get install libxml2-utils"
+checkExe tidy "sudo apt-get install tidy"
+
+echo Done
