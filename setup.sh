@@ -32,10 +32,12 @@ function checkExe() {
         echo -n "."
     fi
 }
-echo "Checking for programs required for syntax checking"
+echo "Checking for programs required for syntax checking (handy for vim syntastic)"
 checkExe jshint "sudo npm install jshint -g"
 checkExe pyflakes "sudo apt-get install pyflakes"
 checkExe xmllint "sudo apt-get install libxml2-utils"
 checkExe tidy "sudo apt-get install tidy"
+checkExe csslint "sudo npm install csslint -g"
+checkExe js-yaml "sudo npm install js-yaml -g"
 
 echo Done
