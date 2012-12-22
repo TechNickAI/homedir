@@ -45,3 +45,4 @@ alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
 alias gw='git diff --color-words'
 alias gb='git diff --word-diff'
 
+test -f ~/.extra_profile && source ~/.extra_profile
