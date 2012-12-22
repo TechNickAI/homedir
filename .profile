@@ -40,6 +40,10 @@ export EDITOR=`which vim`
 ## Bash prompt
 source ~/homedir/.bash_prompt
 
+# Colors for ls
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+export CLICOLOR=1
+
 # some useful git aliases
 alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
 alias gw='git diff --color-words'
