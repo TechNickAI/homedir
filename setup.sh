@@ -23,7 +23,7 @@ done
 
 set +e
 
-function checkExe() {
+function checkExe(){
     loc=`which $1`
     if [ "$?" != "0" ] ; then
         echo
