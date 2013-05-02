@@ -8,6 +8,9 @@ filetype plugin indent on
 set title
 set nocompatible
 
+""" CtrlP for fuzzy file matching
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " Syntastic settings
 set statusline+=%#warningmsg#
