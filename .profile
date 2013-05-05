@@ -49,4 +49,20 @@ alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
 alias gw='git diff --color-words'
 alias gb='git diff --word-diff'
 
+export PIP_DOWNLOAD_CACHE=~/.pip-download-cache
+
 test -f ~/.extra_profile && source ~/.extra_profile
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+if [ -f /usr/local/bin/virtualenvwrapper ] ; then
+# Virtual env wrapper for python
+export WORKON_HOME=~/.virtualenvs
+. /usr/local/bin/virtualenvwrapper.sh
+fi
+
+[[ -s /Users/nick/.nvm/nvm.sh ]] && . /Users/nick/.nvm/nvm.sh # This loads NVM
+
+# Ruby env 
+test `which rbexnv` && eval "$(rbenv init -)"
