@@ -56,7 +56,7 @@ test -f ~/.extra_profile && source ~/.extra_profile
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-if [ -f /usr/local/bin/virtualenvwrapper ] ; then
+if [ -f /usr/local/bin/virtualenvwrapper.sh ] ; then
 # Virtual env wrapper for python
 export WORKON_HOME=~/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
