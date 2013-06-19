@@ -77,6 +77,9 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+""" Additional syntaxes
+au BufRead,BufNewFile *.handlebars,*.hbs set ft=html syntax=handlebars
+
 " Working with split screen nicely
 " Resize Split When the window is resized
 au VimResized * :wincmd =
