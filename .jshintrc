@@ -59,6 +59,8 @@
     "plusplus"      : false,
     "sub"           : false,
     "trailing"      : true,
-    "white"         : false
-
+    "indent"        : 4,
+    "maxstatements" : 25,
+    "maxcomplexity" : 8,
+    "maxlen"        : 160
 }
