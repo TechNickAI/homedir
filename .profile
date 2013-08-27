@@ -16,12 +16,20 @@ test -d $bash_hist || mkdir $bash_hist
 export HISTFILE=$bash_hist/hist-$sship-`date +%Y-%m-%d-%H-%M-%S`.hist
 
 # Clean up files based on $MAX_DAYS
-MAX_DAYS=180
-if [ "$MAX_DAYS" != "" ] ; then
-    find $bash_hist -mtime +$MAX_DAYS | xargs rm -rf
+# Have it be more aggressive if there are more files.
+# The thought here is that a server that doesn't get much traffic should not be pruned
+# But a server that gets a lot of traffic (such as a laptop) should be pruned more often
+NUM_FILES=`ls -1 $bash_hist | wc -l`
+if [ "$NUM_FILES" -gt "500" ]; then 
+    MAX_DAYS=30
+elif [ "$NUM_FILES" -gt "50" ]; then
+    MAX_DAYS=180
+else
+    MAX_DAYS=1000
 fi
+find $bash_hist -type f -mtime +$MAX_DAYS | xargs rm -rf
 
-# Read in history from the previous history files, up until we hit HISTSIZE
+# Read in history from the previous history files
 histtemp=`mktemp /tmp/hist.XXXXXXXX`
 touch $histtemp
 for file in `ls -1tr $bash_hist`; do
@@ -63,6 +71,9 @@ export WORKON_HOME=~/.virtualenvs
 fi
 
 [[ -s /Users/nick/.nvm/nvm.sh ]] && . /Users/nick/.nvm/nvm.sh # This loads NVM
+
+# Elastic load balancer tools
+export PATH="$PATH:~/src/AWS-ElasticBeanstalk-CLI-2.5.0/eb/macosx/python2.7/"
 
 # Ruby env 
 test `which rbexnv` && eval "$(rbenv init -)"
