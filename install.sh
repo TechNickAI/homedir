@@ -1,5 +1,5 @@
 cd ~
-git clone git@github.com:gorillamania/homedir.git
+git clone https://github.com/gorillamania/homedir.git
 cd homedir
 
 echo
@@ -9,4 +9,4 @@ git submodule update
 
 echo
 echo "Setup all the symlinks to homedir (setup.sh)"
-sh setup.sh
+bash setup.sh

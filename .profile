@@ -70,7 +70,7 @@ export WORKON_HOME=~/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
 fi
 
-[[ -s /Users/nick/.nvm/nvm.sh ]] && . /Users/nick/.nvm/nvm.sh # This loads NVM
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 
 # Elastic load balancer tools
 export PATH="$PATH:~/src/AWS-ElasticBeanstalk-CLI-2.5.0/eb/macosx/python2.7/"
