@@ -19,6 +19,8 @@ set statusline+=%*
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_echo_current_error=1
+let g:syntastic_python_checkers=['pyflakes','pylint','python']
+
 
 " Syntax checker installations...
 " sudo apt-get install pyflakes
