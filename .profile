@@ -72,8 +72,5 @@ fi
 
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 
-# Elastic load balancer tools
-export PATH="$PATH:~/src/AWS-ElasticBeanstalk-CLI-2.5.0/eb/macosx/python2.7/"
-
 # Ruby env 
 test `which rbexnv` && eval "$(rbenv init -)"
