@@ -12,7 +12,7 @@ These are for common files in my home directory. Adds bash, vim and other functi
     git submodule update
 
     # Makes all the symlinks to homedir
-    bassh setup.sh
+    bash setup.sh
 
 ```
 
