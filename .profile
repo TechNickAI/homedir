@@ -71,6 +71,7 @@ export WORKON_HOME=~/.virtualenvs
 fi
 
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+[[ -s /usr/local/opt/nvm/nvm.sh ]] && . /usr/local/opt/nvm/nvm.sh # This loads NVM from brew
 
 # Ruby env 
 test `which rbexnv` && eval "$(rbenv init -)"
