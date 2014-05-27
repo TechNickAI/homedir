@@ -59,9 +59,7 @@ alias gb='git diff --word-diff'
 
 export PIP_DOWNLOAD_CACHE=~/.pip-download-cache
 
-test -f ~/.extra_profile && source ~/.extra_profile
 
-### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 if [ -f /usr/local/bin/virtualenvwrapper.sh ] ; then
@@ -71,6 +69,9 @@ export WORKON_HOME=~/.virtualenvs
 fi
 
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+[[ -d $(brew --prefix nvm) ]] && . $(brew --prefix nvm)/nvm.sh # This loads NVM, from brew
 
 # Ruby env 
 test `which rbexnv` && eval "$(rbenv init -)"
+
+test -f ~/.extra_profile && source ~/.extra_profile
