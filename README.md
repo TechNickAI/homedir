@@ -18,7 +18,7 @@ These are for common files in my home directory. Adds bash, vim and other functi
 
 or as a one-liner:
 
-`curl "https://raw.github.com/gorillamania/homedir/master/install.sh" | bash`
+`curl "https://raw.githubusercontent.com/gorillamania/homedir/master/install.sh" | bash`
 
 # Auto update
 Once installed, homedir will check when you log in (but not more than once per hour) for a new version. If found, it will ask you if you want to update. To disable this functionality, run:
