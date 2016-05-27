@@ -5,6 +5,9 @@
 # Abort on error
 set -e
 
+# Fix osx history across sessions http://superuser.com/questions/950403/bash-history-not-preserved-between-terminal-sessions-on-mac
+touch ~/.bash_sessions_disable
+
 cd ~
 for file in .vimrc .vim .selected_editor .profile .hushlogin .jshintrc ; do
   if [ -h $file ] ; then
