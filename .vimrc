@@ -61,7 +61,6 @@ set list listchars=tab:▸\ ,trail:⋅,nbsp:⋅
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-set expandtab
 "set autoindent
 "set smartindent
 
@@ -89,3 +88,4 @@ au VimResized * :wincmd =
 abbreviate wierd weird
 abbreviate restaraunt restaurant
 abbreviate garauntee guarantee
+set expandtab
