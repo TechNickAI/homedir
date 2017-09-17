@@ -20,6 +20,18 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_echo_current_error=1
 
+" Auto [un]set paste ala
+" https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
 
 " Syntax checker installations...
 " sudo apt-get install pyflakes
@@ -43,7 +55,6 @@ set laststatus=2
 set statusline=%F%m%r%h%w\ \ [%l,%v][%p%%]
 
 """ Colors
-set bg=dark
 "http://ethanschoonover.com/solarized
 set t_Co=256
 let g:solarized_termcolors=256
@@ -89,3 +100,4 @@ abbreviate wierd weird
 abbreviate restaraunt restaurant
 abbreviate garauntee guarantee
 set expandtab
+set bg=dark
