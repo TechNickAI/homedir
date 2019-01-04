@@ -1,7 +1,7 @@
 # Overview
 These are for common files in my home directory. Adds bash, vim and other functionality.
 
-# Install
+## Install
 ```
     cd ~
     git clone https://github.com/gorillamania/homedir.git
@@ -19,9 +19,3 @@ These are for common files in my home directory. Adds bash, vim and other functi
 or as a one-liner:
 
 `curl "https://raw.githubusercontent.com/gorillamania/homedir/master/install.sh" | bash`
-
-# Auto update
-Once installed, homedir will check when you log in (but not more than once per hour) for a new version. If found, it will ask you if you want to update. To disable this functionality, run:
-
-`touch ~/homedir/.homedir_no_update`
-
