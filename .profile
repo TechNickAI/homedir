@@ -44,9 +44,6 @@ updateHistory &
 export SVN_EDITOR=`which vim`
 export EDITOR=`which vim`
 
-# Auto update
-~/homedir/update.sh
-
 ## Bash prompt
 source ~/homedir/.bash_prompt
 
