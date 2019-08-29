@@ -54,12 +54,6 @@ set novisualbell
 set laststatus=2
 set statusline=%F%m%r%h%w\ \ [%l,%v][%p%%]
 
-""" Colors
-"http://ethanschoonover.com/solarized
-set t_Co=256
-let g:solarized_termcolors=256
-colorscheme solarized
-
 """ Settings for tab auto completion of files
 set wildmode=longest:full
 set wildmenu
