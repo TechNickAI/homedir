@@ -53,6 +53,9 @@ set novisualbell
 " Status line
 set laststatus=2
 set statusline=%F%m%r%h%w\ \ [%l,%v][%p%%]
+" Highlight current line
+set cursorline
+
 
 """ Settings for tab auto completion of files
 set wildmode=longest:full
@@ -95,3 +98,8 @@ abbreviate restaraunt restaurant
 abbreviate garauntee guarantee
 set expandtab
 set bg=dark
+
+" Make it obvious where $linelen characters is
+set textwidth=160
+set colorcolumn=+1
+
