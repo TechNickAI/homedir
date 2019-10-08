@@ -6,6 +6,9 @@ unset HISTFILESIZE
 # ignore dupes in bash
 export HISTCONTROL=ignoreboth
 
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
+
 function updateHistory() {
     # http://www.gnu.org/software/bash/manual/html_node/Bash-History-Builtins.html#Bash-History-Builtins
     # We are going to store each session as a separate file, with the IP addr
@@ -38,7 +41,19 @@ function updateHistory() {
     rm $histtemp
 }
 # Run this in the background because it can take 1/2 a second
-updateHistory &
+#updateHistory &
+
+# Add tab completion for many Bash commands
+if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
+    # Ensure existing Homebrew v1 completions continue to work
+    export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d";
+    source "$(brew --prefix)/etc/profile.d/bash_completion.sh";
+elif [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion;
+fi;
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
 # Always use vim
 export SVN_EDITOR=`which vim`
@@ -55,9 +70,13 @@ export CLICOLOR=1
 alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
 alias gw='git diff --color-words'
 alias gb='git diff --word-diff'
+alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias localip="ipconfig getifaddr en0"
+alias GETv='curl -v'
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
 
 export PIP_DOWNLOAD_CACHE=~/.pip-download-cache
-
 
 export PATH="/usr/local/heroku/bin:$PATH"
 
@@ -87,6 +106,11 @@ function commit_link(){
     echo $url
     open $url
 
+}
+
+# Run `dig` and display the most useful info
+function digga() {
+    dig +nocmd "$1" any +multiline +noall +answer;
 }
 
 test -f ~/.extra_profile && source ~/.extra_profile
