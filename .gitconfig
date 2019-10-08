@@ -31,3 +31,6 @@
     prompt = false
 [github]
     user = gorillamania
+[help]
+    autocorrect = 1
+
