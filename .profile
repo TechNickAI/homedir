@@ -113,7 +113,9 @@ function digga() {
     dig +nocmd "$1" any +multiline +noall +answer;
 }
 
-test -f ~/.extra_profile && source ~/.extra_profile
+# OSX hide zsh warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
+test -f ~/.extra_profile && source ~/.extra_profile
 
 
