@@ -2,6 +2,7 @@
 
 import datetime
 import simplejson
+from decimal import Decimal as D
 
 # Auto Reload
 %load_ext autoreload
