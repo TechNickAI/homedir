@@ -72,31 +72,25 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Include our locals
+#### Startup scripts
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Python Virtual env
+if [ -f /usr/local/bin/virtualenvwrapper.sh ] ; then
+    export WORKON_HOME=~/.virtualenvs
+    . /usr/local/bin/virtualenvwrapper.sh
+fi
+
+#### Environment variables
+# Always use vim
+export SVN_EDITOR=`which vim`
+export EDITOR=`which vim`
+
+#### Aliases
+alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias localip="ipconfig getifaddr en0"
+
+# Include local machine specific setup
 test -f ~/.extra_zshrc && source ~/.extra_zshrc
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
