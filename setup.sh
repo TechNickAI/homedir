@@ -9,7 +9,7 @@ set -e
 touch ~/.bash_sessions_disable
 
 cd ~
-for file in .vimrc .vim .selected_editor .profile .hushlogin .jshintrc .gitconfig; do
+for file in .vimrc .vim .selected_editor .profile .hushlogin .jshintrc .gitconfig .zshrc; do
   if [ -h $file ] ; then
     # File is already a symbolic link
     echo "Symlink for $file is already there"
