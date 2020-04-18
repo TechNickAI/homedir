@@ -88,6 +88,14 @@ fi
 export SVN_EDITOR=`which vim`
 export EDITOR=`which vim`
 
+#Go
+export GOPATH=~/src/go
+test -d $GOPATH || mkdir -p $GOPATH
+export GOPRIVATE='github.com/tantralabs/*,github.com/heartrithm/*'
+
+# Path
+export PATH=$PATH:$GOPATH/bin
+
 #### Aliases
 alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias localip="ipconfig getifaddr en0"
