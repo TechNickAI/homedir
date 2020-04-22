@@ -2,35 +2,20 @@
     name = Nick Sullivan
     email = nick@sullivanflock.com
     username = gorillamania
+[github]
+    user = gorillamania
 [core]
     editor = vim
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[alias]
+    # Safer pulls; don't do anything other than a fast forward on merge
+    pull = "pull --ff-only"
 [web]
     browser = google-chrome
 [push]
     default = matching
+    followTags = true
 [color]
     ui = auto
-[color "branch"]
-    current = yellow bold
-    local = green bold
-    remote = cyan bold
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-[color "status"]
-    added = green bold
-    changed = yellow bold
-    untracked = red bold
-[diff]
-    tool = vimdiff
-[difftool]
-    prompt = false
-[github]
-    user = gorillamania
 [help]
     autocorrect = 1
-
