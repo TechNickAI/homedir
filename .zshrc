@@ -100,5 +100,17 @@ export PATH=$PATH:$GOPATH/bin
 alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias localip="ipconfig getifaddr en0"
 
+#### Functions
+function commit_link(){
+    # hash
+    hash=`git log -n 1 --format="%H"`
+
+    # repo owner/name
+    repo=`git remote -v | grep github.com | head -1 | awk -F ':' '{print $2}' | perl -p -e 's/\.git.+//'`
+    url="https://github.com/$repo/commit/$hash"
+    echo $url
+    open $url
+}
+
 # Include local machine specific setup
 test -f ~/.extra_zshrc && source ~/.extra_zshrc
