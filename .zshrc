@@ -102,6 +102,8 @@ alias localip="ipconfig getifaddr en0"
 
 #### Functions
 function commit_link(){
+    ## Grab the latest commit from the current repo and open it on github.com
+
     # hash
     hash=`git log -n 1 --format="%H"`
 
@@ -111,6 +113,24 @@ function commit_link(){
     echo $url
     open $url
 }
+
+function wifi_redirect(){
+    # When you have connected to a wifi portal, sometimes it can be hard to trigger the TOS captive portal
+    # Do an http fetch and capture where it is trying to redirect you, and open that url
+    test_url="http://down.com/"
+    tmpfile="/tmp/wifi_redirect_headers.txt"
+    echo "Fetching headers for $test_url"
+    curl -D $tmpfile $test_url > /dev/null
+    location_header=`grep Location: $tmpfile`
+    location_url=`echo $location_header | sed 's/Location://' | sed 's/[[:space:]]//g'`
+    echo Found $location_url
+    if [ "`echo $location_url | grep down.com`" ] ; then
+        echo "Already connected"
+        location_url="https://ismyinternetworking.com/"
+    fi
+    open $location_url
+}
+
 
 # Include local machine specific setup
 test -f ~/.extra_zshrc && source ~/.extra_zshrc
