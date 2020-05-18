@@ -106,6 +106,10 @@ function commit_link(){
 
     # hash
     hash=`git log -n 1 --format="%H"`
+    if [ $? != 0 ]; then
+        echo "Current directory is not a repo"
+        return
+    fi
 
     # repo owner/name
     repo=`git remote -v | grep github.com | head -1 | awk -F ':' '{print $2}' | perl -p -e 's/\.git.+//'`
