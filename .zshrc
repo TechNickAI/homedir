@@ -83,6 +83,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Python Virtual env
 if [ -f /usr/local/bin/virtualenvwrapper.sh ] ; then
+    export VIRTUALENVWRAPPER_PYTHON=`which python3`
     export WORKON_HOME=~/.virtualenvs
     . /usr/local/bin/virtualenvwrapper.sh
 fi
