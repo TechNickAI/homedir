@@ -93,6 +93,10 @@ fi
 export SVN_EDITOR=`which vim`
 export EDITOR=`which vim`
 
+# Turn on better_exceptions in python
+# https://github.com/Qix-/better-exceptions
+export BETTER_EXCEPTIONS=1
+
 #Go
 export GOPATH=~/src/go
 test -d $GOPATH || mkdir -p $GOPATH
