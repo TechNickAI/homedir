@@ -108,6 +108,8 @@ export PATH=$PATH:$GOPATH/bin
 #### Aliases
 alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias localip="ipconfig getifaddr en0"
+alias randpick='jot -r 1 1'
+alias agp="ag -G '.py'"
 
 #### Functions
 function commit_link(){
