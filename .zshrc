@@ -1,8 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Homebrew path
+if [ -f /opt/homebrew/bin/brew ] ; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/nick/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 if [ ! -d $ZSH ] ; then
     echo "Installing Oh My Zsh"
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -81,13 +86,14 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Python Virtual env
-if [ -f /usr/local/bin/virtualenvwrapper.sh ] ; then
-    export VIRTUALENVWRAPPER_PYTHON=`which python3`
-    export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
-    export WORKON_HOME=~/.virtualenvs
-    . /usr/local/bin/virtualenvwrapper.sh
-fi
+# Python Virtual env                                                                                                                                     
+which virtualenvwrapper.sh > /dev/null                                                                                                                   
+if [ "$?" != "1" ] ; then                                                                                                                                
+    export VIRTUALENVWRAPPER_PYTHON=`which python3`                                                                                                      
+    export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`                                                                                               
+    export WORKON_HOME=~/.virtualenvs                                                                                                                    
+    . `which virtualenvwrapper.sh`                                                                                                                       
+fi  
 
 #### Environment variables
 # Always use vim
