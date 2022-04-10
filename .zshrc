@@ -86,14 +86,14 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Python Virtual env                                                                                                                                     
-which virtualenvwrapper.sh > /dev/null                                                                                                                   
-if [ "$?" != "1" ] ; then                                                                                                                                
-    export VIRTUALENVWRAPPER_PYTHON=`which python3`                                                                                                      
-    export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`                                                                                               
-    export WORKON_HOME=~/.virtualenvs                                                                                                                    
-    . `which virtualenvwrapper.sh`                                                                                                                       
-fi  
+# Python Virtual env
+which virtualenvwrapper.sh > /dev/null
+if [ "$?" != "1" ] ; then
+    export VIRTUALENVWRAPPER_PYTHON=`which python3`
+    export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
+    export WORKON_HOME=~/.virtualenvs
+    . `which virtualenvwrapper.sh`
+fi
 
 #### Environment variables
 # Always use vim
