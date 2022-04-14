@@ -116,6 +116,7 @@ export PATH=$PATH:$GOPATH/bin
 alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias localip="ipconfig getifaddr en0"
 alias randpick='jot -r 1 1'
+alias randpassword='openssl rand -base64 15'
 alias agp="ag -G '.py'"
 
 #### Functions
