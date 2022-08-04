@@ -116,7 +116,6 @@ export PATH=$PATH:$GOPATH/bin
 alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias localip="ipconfig getifaddr en0"
 alias randpick='jot -r 1 1'
-alias randpassword='openssl rand -base64 15'
 alias agp="ag -G '.py'"
 
 #### Functions
@@ -154,6 +153,9 @@ function wifi_redirect(){
     open $location_url
 }
 
+function randpasswd(){
+    pwgen -y $1
+}
 
 # Include local machine specific setup
 test -f ~/.extra_zshrc && source ~/.extra_zshrc
