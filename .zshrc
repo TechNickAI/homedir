@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Homebrew path
+export HOMEBREW_BREWFILE=~/homedir/Brewfile
 if [ -f /opt/homebrew/bin/brew ] ; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
