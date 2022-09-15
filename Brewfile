@@ -8,7 +8,6 @@ cask "firefox"
 cask "google-chrome"
 cask "kindle"
 cask "notion"
-cask "opera"
 cask "slack"
 cask "spotify"
 cask "sublime-merge"
@@ -28,11 +27,9 @@ brew "watch"
 brew "wget"
 
 # Programming Environment
-brew "awscli"
 brew "circleci"
 brew "cmake"
 brew "dialog"
-brew "docker"
 brew "influxdb", restart_service: true
 brew "mysql", restart_service: true
 brew "mysql-client"
