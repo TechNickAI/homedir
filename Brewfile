@@ -6,13 +6,10 @@ cask "dropbox"
 cask "exodus"
 cask "firefox"
 cask "google-chrome"
-cask "kindle"
 cask "notion"
 cask "slack"
 cask "spotify"
 cask "sublime-merge"
-cask "sublime-text"
-cask "tandem"
 cask "telegram"
 cask "tor-browser"
 cask "vlc"
@@ -34,7 +31,6 @@ brew "influxdb", restart_service: true
 brew "mysql", restart_service: true
 brew "mysql-client"
 brew "mytop"
-brew "openblas"
 brew "openssl@3", link: true
 brew "postgresql", restart_service: true
 brew "pv"
