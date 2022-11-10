@@ -19,3 +19,5 @@
     ui = auto
 [help]
     autocorrect = 1
+[init]
+	defaultBranch = master
