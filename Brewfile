@@ -2,6 +2,7 @@
 cask "asana"
 cask "atomic-wallet"
 cask "brave-browser"
+case "discord"
 cask "dropbox"
 cask "exodus"
 cask "firefox"
@@ -36,5 +37,6 @@ brew "openssl@3", link: true
 brew "postgresql", restart_service: true
 brew "pv"
 brew "python@3.9"
+brew "python@3.10"
 brew "redis", restart_service: true
 
