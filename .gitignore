@@ -1,5 +1,5 @@
 .*.swp
-.vim/.netrwhist
-.homedir_last_update
 Brewfile.lock.json
+.homedir_last_update
 .homedir_no_update
+.vim/.netrwhist
