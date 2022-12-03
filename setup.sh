@@ -15,7 +15,7 @@ for file in .vimrc .vim .selected_editor .profile .hushlogin .jshintrc .gitconfi
     echo "Symlink for $file is already there"
     continue
   fi
-  if [ -d $file -o -f $file ] ; then
+  if [ -d $file ] || [ -f $file ] ; then
     echo "Backing up existing $file to $file.b4homedir"
     rm -rf $file.b4homedir
     mv $file $file.b4homedir
@@ -27,8 +27,7 @@ done
 set +e
 
 function checkExe(){
-    loc=`which $1`
-    if [ "$?" != "0" ] ; then
+    if ! command -v $1 &> /dev/null; then
         echo
         echo "$1 NOT found, install with '$2'"
     else
