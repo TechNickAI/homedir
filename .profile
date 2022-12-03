@@ -22,7 +22,7 @@ function updateHistory() {
     # The thought here is that a server that doesn't get much traffic should not be pruned
     # But a server that gets a lot of traffic (such as a laptop) should be pruned more often
     NUM_FILES=`ls -1 $bash_hist | wc -l`
-    if [ "$NUM_FILES" -gt "500" ]; then 
+    if [ "$NUM_FILES" -gt "500" ]; then
         MAX_DAYS=30
     elif [ "$NUM_FILES" -gt "50" ]; then
         MAX_DAYS=180
@@ -91,7 +91,7 @@ fi
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 [[ -s /usr/local/opt/nvm/nvm.sh ]] && . /usr/local/opt/nvm/nvm.sh # This loads NVM from brew
 
-# Ruby env 
+# Ruby env
 test `which rbexnv` && eval "$(rbenv init -)"
 
 function commit_link(){

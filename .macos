@@ -203,7 +203,7 @@ find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -dele
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
-# Show the full URL in the address bar (note: this still hides the scheme) defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true 
+# Show the full URL in the address bar (note: this still hides the scheme) defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 # Set Safari’s home page to `about:blank` for faster loading
 defaults write com.apple.Safari HomePage -string "about:blank"
 
