@@ -31,9 +31,3 @@ jobs:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: /
-          PYTHON_BLACK_CONFIG_FILE: pyproject.toml
-          PYTHON_FLAKE8_CONFIG_FILE: setup.cfg
-          # Typing - meh
-          VALIDATE_PYTHON_MYPY: false
-          # we do flake8 with a separate action so we can configure addons
-          VALIDATE_PYTHON_FLAKE8: false
