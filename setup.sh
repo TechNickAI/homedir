@@ -27,7 +27,7 @@ done
 set +e
 
 function checkExe(){
-    if ! command -v $1 &> /dev/null; then
+    if ! command -v "$1" &> /dev/null; then
         echo
         echo "$1 NOT found, install with '$2'"
     else
