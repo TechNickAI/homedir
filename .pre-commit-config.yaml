@@ -1,6 +1,9 @@
 ---
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
+
+exclude: ^.vim/*
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
@@ -29,13 +32,11 @@ repos:
       - id: sort-simple-yaml
         files: (.isort.cfg|setup.cfg)
       - id: trailing-whitespace
-    exclude: ^.vim/
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.3.1
     hooks:
       - id: remove-tabs
-    exclude: ^.vim/
 
   - repo: https://github.com/sirosen/texthooks
     rev: 0.4.0
@@ -63,4 +64,3 @@ repos:
     rev: v2.2.2
     hooks:
       - id: codespell
-    exclude: ^.vim/
