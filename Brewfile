@@ -29,6 +29,7 @@ brew "wget"
 brew "circleci"
 brew "cmake"
 brew "dialog"
+cask "gh"
 brew "influxdb", restart_service: true
 brew "mysql", restart_service: true
 brew "mysql-client"
