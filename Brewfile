@@ -39,5 +39,6 @@ brew "postgresql", restart_service: true
 brew "pv"
 brew "python@3.9"
 brew "python@3.10"
+brew "python@3.11"
 brew "redis", restart_service: true
 
