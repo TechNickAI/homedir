@@ -2,6 +2,7 @@
 cask "asana"
 cask "atomic-wallet"
 cask "brave-browser"
+cask "devutils"
 cask "discord"
 cask "dropbox"
 cask "exodus"
