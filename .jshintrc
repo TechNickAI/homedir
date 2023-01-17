@@ -12,7 +12,6 @@
     "predef": [
         "escape",
         "grunt",
-        "Pilotfish",
         "QUnit"
     ],
     "debug": false,

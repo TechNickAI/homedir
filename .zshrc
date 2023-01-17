@@ -3,7 +3,7 @@
 
 # Homebrew path
 export HOMEBREW_BREWFILE=~/homedir/Brewfile
-if [ -f /opt/homebrew/bin/brew ] ; then
+if [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -11,7 +11,7 @@ PYTHONPYCACHEPREFIX=$HOME/.cache/python
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-if [ ! -d $ZSH ] ; then
+if [ ! -d $ZSH ]; then
     echo "Installing Oh My Zsh"
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
@@ -87,21 +87,21 @@ source $ZSH/oh-my-zsh.sh
 #### Startup scripts
 # NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Python Virtual env
-which virtualenvwrapper.sh > /dev/null
-if [ "$?" != "1" ] ; then
-    export VIRTUALENVWRAPPER_PYTHON=`which python3`
-    export VIRTUALENVWRAPPER_VIRTUALENV=`which virtualenv`
+which virtualenvwrapper.sh >/dev/null
+if [ "$?" != "1" ]; then
+    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+    export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
     export WORKON_HOME=~/.virtualenvs
-    . `which virtualenvwrapper.sh`
+    . $(which virtualenvwrapper.sh)
 fi
 
 #### Environment variables
 # Always use vim
-export SVN_EDITOR=`which vim`
-export EDITOR=`which vim`
+export SVN_EDITOR=$(which vim)
+export EDITOR=$(which vim)
 
 # Turn on better_exceptions in python
 # https://github.com/Qix-/better-exceptions
@@ -122,41 +122,41 @@ alias randpick='jot -r 1 1'
 alias agp="ag -G '.py'"
 
 #### Functions
-function commit_link(){
+function commit_link() {
     ## Grab the latest commit from the current repo and open it on github.com
 
     # hash
-    hash=`git log -n 1 --format="%H"`
+    hash=$(git log -n 1 --format="%H")
     if [ $? != 0 ]; then
         echo "Current directory is not a repo"
         return
     fi
 
     # repo owner/name
-    repo=`git remote -v | grep github.com | head -1 | awk -F ':' '{print $2}' | perl -p -e 's/\.git.+//'`
+    repo=$(git remote -v | grep github.com | head -1 | awk -F ':' '{print $2}' | perl -p -e 's/\.git.+//')
     url="https://github.com/$repo/commit/$hash"
     echo $url
     open $url
 }
 
-function wifi_redirect(){
+function wifi_redirect() {
     # When you have connected to a wifi portal, sometimes it can be hard to trigger the TOS captive portal
     # Do an http fetch and capture where it is trying to redirect you, and open that url
     test_url="http://down.com/"
     tmpfile="/tmp/wifi_redirect_headers.txt"
     echo "Fetching headers for $test_url"
-    curl -D $tmpfile $test_url > /dev/null
-    location_header=`grep Location: $tmpfile`
-    location_url=`echo $location_header | sed 's/Location://' | sed 's/[[:space:]]//g'`
+    curl -D $tmpfile $test_url >/dev/null
+    location_header=$(grep Location: $tmpfile)
+    location_url=$(echo $location_header | sed 's/Location://' | sed 's/[[:space:]]//g')
     echo Found $location_url
-    if [ "`echo $location_url | grep down.com`" ] ; then
+    if [ "$(echo $location_url | grep down.com)" ]; then
         echo "Already connected"
         location_url="https://ismyinternetworking.com/"
     fi
     open $location_url
 }
 
-function randpasswd(){
+function randpasswd() {
     pwgen -y $1
 }
 

@@ -10,12 +10,12 @@ touch ~/.bash_sessions_disable
 
 cd ~
 for file in .vimrc .vim .selected_editor .profile .hushlogin .jshintrc .gitconfig .zshrc; do
-  if [ -h $file ] ; then
+  if [ -h $file ]; then
     # File is already a symbolic link
     echo "Symlink for $file is already there"
     continue
   fi
-  if [ -d $file ] || [ -f $file ] ; then
+  if [ -d $file ] || [ -f $file ]; then
     echo "Backing up existing $file to $file.b4homedir"
     rm -rf $file.b4homedir
     mv $file $file.b4homedir
@@ -26,13 +26,13 @@ done
 
 set +e
 
-function checkExe(){
-    if ! command -v "$1" &> /dev/null; then
-        echo
-        echo "$1 NOT found, install with '$2'"
-    else
-        echo -n "."
-    fi
+function checkExe() {
+  if ! command -v "$1" &>/dev/null; then
+    echo
+    echo "$1 NOT found, install with '$2'"
+  else
+    echo -n "."
+  fi
 }
 echo "Checking for programs required for syntax checking (handy for vim syntastic)"
 checkExe jshint "npm install jshint -g"
