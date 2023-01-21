@@ -16,6 +16,7 @@ cask "telegram"
 cask "tor-browser"
 cask "vlc"
 cask "whatsapp"
+cask "warp"
 cask "zoom"
 
 # Command line
