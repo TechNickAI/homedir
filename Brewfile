@@ -5,7 +5,6 @@ cask "brave-browser"
 cask "discord"
 cask "dropbox"
 cask "exodus"
-cask "firefox"
 cask "google-chrome"
 cask "notion"
 cask "slack"
@@ -36,7 +35,7 @@ brew "mysql", restart_service: true
 brew "mysql-client"
 brew "mytop"
 brew "openssl@3", link: true
-brew "postgresql", restart_service: true
+brew "postgresql@14", restart_service: true
 brew "pv"
 brew "python@3.9"
 brew "python@3.10"
