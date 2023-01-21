@@ -32,7 +32,6 @@ brew "cmake"
 brew "dialog"
 brew "gh"
 brew "hadolint"
-brew "influxdb", restart_service: true
 brew "mysql", restart_service: true
 brew "mysql-client"
 brew "mytop"
