@@ -21,16 +21,6 @@ repos:
         files: \.gitignore
       - id: pretty-format-json
         args: [--autofix, --indent=4, --no-sort-keys]
-      - id: requirements-txt-fixer
-        args:
-          [
-            requirements.txt,
-            requirements-dev.txt,
-            requirements-test.txt,
-            requirements.in,
-          ]
-      - id: sort-simple-yaml
-        files: (.isort.cfg|setup.cfg)
       - id: trailing-whitespace
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
