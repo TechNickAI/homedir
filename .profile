@@ -78,8 +78,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 export PIP_DOWNLOAD_CACHE=~/.pip-download-cache
 
-export PATH="/usr/local/heroku/bin:$PATH"
-
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     # Virtual env wrapper for python
     export VIRTUALENVWRAPPER_PYTHON=$(which python3)
