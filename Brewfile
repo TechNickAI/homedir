@@ -24,6 +24,7 @@ brew "the_silver_searcher" # ag
 brew "pwgen"
 brew "watch"
 brew "wget"
+brew "ncdu"
 
 # Programming Environment
 brew "cmake"
