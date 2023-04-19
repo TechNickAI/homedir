@@ -1,4 +1,5 @@
 # /Applications
+cask "asana"
 cask "atomic-wallet"
 cask "brave-browser"
 cask "dropbox"
@@ -10,7 +11,6 @@ cask "spotify"
 cask "sublime-merge"
 cask "signal"
 cask "telegram"
-cask "todoist"
 cask "tor-browser"
 cask "transmission"
 cask "vlc"
