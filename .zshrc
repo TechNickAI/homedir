@@ -98,6 +98,18 @@ if [ "$?" != "1" ]; then
     . $(which virtualenvwrapper.sh)
 fi
 
+# For src directories, if we have a matching virtualenv create an alias
+src_contents=$(find ~/src -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+if [[ -n "$src_contents" ]]; then
+    echo "$src_contents" | while read -r env; do
+        env_name=$(basename "$env")
+        has_venv="$WORKON_HOME/$env_name"
+        if [[ -d $has_venv ]]; then
+            alias $env_name="cd ~/src/$env_name; source $has_venv/bin/activate"
+        fi
+    done
+fi
+
 #### Environment variables
 # Always use vim
 export SVN_EDITOR=$(which vim)
