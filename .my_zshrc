@@ -1,0 +1,17 @@
+# Python and virtual env
+PYTHONPYCACHEPREFIX=$HOME/.cache/python
+which virtualenvwrapper.sh >/dev/null
+if [ "$?" != "1" ]; then
+    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+    export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
+    export WORKON_HOME=~/.virtualenvs
+    . $(which virtualenvwrapper.sh)
+fi
+# Turn on better_exceptions in python
+# https://github.com/Qix-/better-exceptions
+export BETTER_EXCEPTIONS=1
+
+#### Environment variables
+# Always use vim
+export SVN_EDITOR=$(which vim)
+export EDITOR=$(which vim)

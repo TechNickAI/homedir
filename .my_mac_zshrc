@@ -1,0 +1,62 @@
+# Homebrew path
+export HOMEBREW_BREWFILE=~/homedir/Brewfile
+if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# For src directories, if we have a matching virtualenv create an alias
+src_contents=$(find ~/src -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+if [[ -n "$src_contents" ]]; then
+    echo "$src_contents" | while read -r env; do
+        env_name=$(basename "$env")
+        has_venv="$WORKON_HOME/$env_name"
+        if [[ -d $has_venv ]]; then
+            alias $env_name="cd ~/src/$env_name; source $has_venv/bin/activate"
+        fi
+    done
+fi
+
+#### Aliases
+alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias localip="ipconfig getifaddr en0"
+alias randpick='jot -r 1 1'
+alias agp="ag -G '.py'"
+
+#### Functions
+function commit_link() {
+    ## Grab the latest commit from the current repo and open it on github.com
+
+    # hash
+    hash=$(git log -n 1 --format="%H")
+    if [ $? != 0 ]; then
+        echo "Current directory is not a repo"
+        return
+    fi
+
+    # repo owner/name
+    repo=$(git remote -v | grep github.com | head -1 | awk -F ':' '{print $2}' | perl -p -e 's/\.git.+//')
+    url="https://github.com/$repo/commit/$hash"
+    echo $url
+    open $url
+}
+
+function wifi_redirect() {
+    # When you have connected to a wifi portal, sometimes it can be hard to trigger the TOS captive portal
+    # Do an http fetch and capture where it is trying to redirect you, and open that url
+    test_url="http://down.com/"
+    tmpfile="/tmp/wifi_redirect_headers.txt"
+    echo "Fetching headers for $test_url"
+    curl -D $tmpfile $test_url >/dev/null
+    location_header=$(grep Location: $tmpfile)
+    location_url=$(echo $location_header | sed 's/Location://' | sed 's/[[:space:]]//g')
+    echo Found $location_url
+    if [ "$(echo $location_url | grep down.com)" ]; then
+        echo "Already connected"
+        location_url="https://ismyinternetworking.com/"
+    fi
+    open $location_url
+}
+
+function randpasswd() {
+    pwgen -y $1
+}
