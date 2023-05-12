@@ -1,12 +1,17 @@
 # Python and virtual env
 PYTHONPYCACHEPREFIX=$HOME/.cache/python
-which virtualenvwrapper.sh >/dev/null
-if [ "$?" != "1" ]; then
-    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-    export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
-    export WORKON_HOME=~/.virtualenvs
-    . $(which virtualenvwrapper.sh)
+
+# Try to find virtualenvwrapper.sh and fail silently if not found
+VIRTUAL_ENV_WRAPPER_PATH=$(command -v virtualenvwrapper.sh 2>/dev/null)
+
+if [ -n "$VIRTUAL_ENV_WRAPPER_PATH" ]; then
+    # Set up the environment variables and source the script
+    export VIRTUALENVWRAPPER_PYTHON=$(command -v python3)
+    export VIRTUALENVWRAPPER_VIRTUALENV=$(command -v virtualenv)
+    export WORKON_HOME="$HOME/.virtualenvs"
+    source "$VIRTUAL_ENV_WRAPPER_PATH"
 fi
+
 # Turn on better_exceptions in python
 # https://github.com/Qix-/better-exceptions
 export BETTER_EXCEPTIONS=1

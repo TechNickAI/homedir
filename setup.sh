@@ -9,7 +9,7 @@ set -e
 touch ~/.bash_sessions_disable
 
 cd ~
-for file in .vimrc .vim .selected_editor .profile .hushlogin .jshintrc .gitconfig .zshrc; do
+for file in .vimrc .vim .selected_editor .hushlogin .jshintrc .gitconfig; do
   if [ -h $file ]; then
     # File is already a symbolic link
     echo "Symlink for $file is already there"
@@ -23,6 +23,9 @@ for file in .vimrc .vim .selected_editor .profile .hushlogin .jshintrc .gitconfi
   echo "Creating symlink for $file"
   ln -s homedir/$file
 done
+
+echo Installing shell
+curl -fsSL https://raw.githubusercontent.com/gustavohellwig/gh-zsh/main/gh-zsh.sh | bash
 
 set +e
 
