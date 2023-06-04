@@ -1,9 +1,7 @@
 # /Applications
 cask "asana"
-cask "atomic-wallet"
 cask "brave-browser"
 cask "dropbox"
-cask "exodus"
 cask "freedom"
 cask "google-chrome"
 cask "notion"
