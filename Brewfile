@@ -18,6 +18,7 @@ cask "warp"
 cask "zoom"
 
 # Command line
+brew "bat"
 brew "mackup"
 brew "the_silver_searcher" # ag
 brew "pwgen"
