@@ -14,7 +14,6 @@ cask "tor-browser"
 cask "transmission"
 cask "vlc"
 cask "whatsapp"
-cask "warp"
 cask "zoom"
 
 # Command line
