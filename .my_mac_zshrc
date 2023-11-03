@@ -48,6 +48,12 @@ function wifi_redirect() {
     tmpfile="/tmp/wifi_redirect_headers.txt"
     echo "Fetching headers for $test_url"
     curl -D $tmpfile $test_url >/dev/null
+    # Check if the exit status is zero
+    if [ $? != 0 ]; then
+        echo "Error fetching $test_url, probably no internet connection"
+        return
+    fi
+
     location_header=$(grep Location: $tmpfile)
     location_url=$(echo $location_header | sed 's/Location://' | sed 's/[[:space:]]//g')
     echo Found $location_url
