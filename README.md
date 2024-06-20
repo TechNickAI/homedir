@@ -6,7 +6,7 @@ These are for common files in my home directory. Adds bash, vim and other functi
 
 ```bash
     cd ~
-    git clone https://github.com/gorillamania/homedir.git
+    git clone https://github.com/TechNickAI/homedir.git
     cd homedir
 
     # Update the submodules (vim plugins)
@@ -20,4 +20,4 @@ These are for common files in my home directory. Adds bash, vim and other functi
 
 or as a one-liner:
 
-`curl "https://raw.githubusercontent.com/gorillamania/homedir/master/install.sh" | bash`
+`curl "https://raw.githubusercontent.com/TechNickAI/homedir/master/install.sh" | bash`

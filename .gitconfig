@@ -1,9 +1,9 @@
 [user]
 name = Nick Sullivan
 email = nick@sullivanflock.com
-username = gorillamania
+username = TechNickAI
 [github]
-user = gorillamania
+user = TechNickAI
 [core]
 editor = vim
 whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol

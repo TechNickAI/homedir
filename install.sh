@@ -1,5 +1,5 @@
 cd ~
-git clone https://github.com/gorillamania/homedir.git
+git clone https://github.com/TechNickAI/homedir.git
 cd homedir
 
 echo
