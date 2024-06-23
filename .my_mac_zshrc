@@ -34,14 +34,14 @@ function commit_link() {
     # hash
     hash=$(git log -n 1 --format="%H")
     if [ $? != 0 ]; then
-        echo "Current directory is not a repo"
+        echo "Oops! Not a Git repository 🚫"
         return
     fi
 
     # repo owner/name
     repo=$(git remote -v | grep github.com | head -1 | awk -F ':' '{print $2}' | perl -p -e 's/\.git.+//')
     url="https://github.com/$repo/commit/$hash"
-    echo $url
+    echo "Opening latest commit on GitHub... 🔗"
     open $url
 }
 
@@ -49,23 +49,23 @@ function wifi_redirect() {
     # Enhanced function to handle WiFi portal redirections
     local test_url="http://down.com/"
     local tmpfile="/tmp/wifi_redirect_headers.txt"
-    echo "Fetching headers for $test_url"
+    echo "Checking internet connection... 🌐"
 
-    # Use curl with -f to fail on HTTP errors
-    if ! curl -f -D "$tmpfile" "$test_url" >/dev/null 2>&1; then
-        echo "Error fetching $test_url, probably no internet connection"
-        return
-    fi
+    # Use curl with -f to fail on HTTP errors and loop until successful
+    while ! curl -f -D "$tmpfile" "$test_url" >/dev/null 2>&1; do
+        echo "No internet connection detected, retrying in 1 second... ⏳"
+        sleep 1
+    done
 
     local location_header=$(grep Location: "$tmpfile")
     local location_url=$(echo "$location_header" | sed 's/Location: //; s/[[:space:]]//g')
-    echo "Found $location_url"
 
     # Check if the redirect URL is the same as the test URL
     if [[ "$location_url" =~ down.com ]]; then
-        echo "Already connected"
-        location_url="https://ismyinternetworking.com/"
+        echo "Internet connection verified ✅"
+        open https://ismyinternetworking.com/
+    else
+        echo "Redirect found, opening $location_url 🔄"
+        open "$location_url"
     fi
-
-    open "$location_url"
 }
