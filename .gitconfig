@@ -13,11 +13,16 @@ pull = "pull --ff-only"
 [web]
 browser = google-chrome
 [push]
-default = matching
+default = simple
 followTags = true
+[pull]
+rebase = true
 [color]
 ui = auto
+branch = auto
+diff = auto
+status = auto
 [help]
 autocorrect = 1
 [init]
-defaultBranch = master
+defaultBranch = main
