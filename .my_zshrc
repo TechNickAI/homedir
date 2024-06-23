@@ -1,3 +1,5 @@
+# This file contains code that is for both OSX and Linux
+
 # Python and virtual env
 PYTHONPYCACHEPREFIX=$HOME/.cache/python
 
@@ -20,3 +22,7 @@ export BETTER_EXCEPTIONS=1
 # Always use vim
 export SVN_EDITOR=$(which vim)
 export EDITOR=$(which vim)
+
+function randpasswd() {
+    pwgen -y $1
+}

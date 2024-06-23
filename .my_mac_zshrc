@@ -1,9 +1,12 @@
-# Homebrew path
+# This file contains code that is specific to OSX
+
+# Homebrew path setup
 export HOMEBREW_BREWFILE=~/homedir/Brewfile
 if [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Add a virtualenv to the path for each directory in ~/src
 src_contents=$(find ~/src -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
 if [[ -n "$src_contents" ]]; then
     echo "$src_contents" | while read -r env; do
@@ -43,28 +46,26 @@ function commit_link() {
 }
 
 function wifi_redirect() {
-    # When you have connected to a wifi portal, sometimes it can be hard to trigger the TOS captive portal
-    # Do an http fetch and capture where it is trying to redirect you, and open that url
-    test_url="http://down.com/"
-    tmpfile="/tmp/wifi_redirect_headers.txt"
+    # Enhanced function to handle WiFi portal redirections
+    local test_url="http://down.com/"
+    local tmpfile="/tmp/wifi_redirect_headers.txt"
     echo "Fetching headers for $test_url"
-    curl -D $tmpfile $test_url >/dev/null
-    # Check if the exit status is zero
-    if [ $? != 0 ]; then
+
+    # Use curl with -f to fail on HTTP errors
+    if ! curl -f -D "$tmpfile" "$test_url" >/dev/null 2>&1; then
         echo "Error fetching $test_url, probably no internet connection"
         return
     fi
 
-    location_header=$(grep Location: $tmpfile)
-    location_url=$(echo $location_header | sed 's/Location://' | sed 's/[[:space:]]//g')
-    echo Found $location_url
-    if [ "$(echo $location_url | grep down.com)" ]; then
+    local location_header=$(grep Location: "$tmpfile")
+    local location_url=$(echo "$location_header" | sed 's/Location: //; s/[[:space:]]//g')
+    echo "Found $location_url"
+
+    # Check if the redirect URL is the same as the test URL
+    if [[ "$location_url" =~ down.com ]]; then
         echo "Already connected"
         location_url="https://ismyinternetworking.com/"
     fi
-    open $location_url
-}
 
-function randpasswd() {
-    pwgen -y $1
+    open "$location_url"
 }
