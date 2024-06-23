@@ -69,3 +69,78 @@ function wifi_redirect() {
         open "$location_url"
     fi
 }
+
+### Handle env files
+
+# Function to source an env file and export variables
+function load_env_file() {
+    local env_file=$1
+
+    if [[ ! -f $env_file ]]; then
+        echo "File not found: $env_file"
+        return 1
+    fi
+
+    # Source the file
+    source "$env_file"
+
+    # Export each variable
+    while IFS='=' read -r key value; do
+        # Skip blank lines and comments
+        [[ -z "$key" || "$key" =~ ^# ]] && continue
+
+        # Remove surrounding quotes from the value if present
+        value=$(echo "$value" | sed -e 's/^"//' -e 's/"$//')
+
+        # Export the key-value pair
+        export "$key=$value"
+    done <"$env_file"
+}
+
+# List of env file locations (files or directories)
+env_locations=(
+    "$HOME/dot_env_shared"
+    "$HOME/dot_env_local"
+    "$HOME/env"
+    "$HOME/src/env"
+    "$HOME/.env"
+)
+
+# Loop through each location
+for location in "${env_locations[@]}"; do
+    if [[ -d $location ]]; then
+        # If it's a directory, read all files in the directory
+        for env_file in "$location"/*; do
+            if [[ -f $env_file ]]; then
+                load_env_file "$env_file"
+            fi
+        done
+    elif [[ -f $location ]]; then
+        # If it's a file, read the file
+        load_env_file "$location"
+    fi
+
+done
+
+# New function to show environment variables loaded from each env file
+function show_env_vars() {
+    for location in "${env_locations[@]}"; do
+        if [[ -d $location ]]; then
+            for env_file in "$location"/*; do
+                if [[ -f $env_file ]]; then
+                    echo "\nVariables from $env_file:"
+                    grep -v '^#' "$env_file" | while IFS='=' read -r key value; do
+                        [[ -z "$key" ]] && continue
+                        echo "$key=$(printenv $key)"
+                    done
+                fi
+            done
+        elif [[ -f $location ]]; then
+            echo "\nVariables from $location:"
+            grep -v '^#' "$location" | while IFS='=' read -r key value; do
+                [[ -z "$key" ]] && continue
+                echo "$key=$(printenv $key)"
+            done
+        fi
+    done
+}
