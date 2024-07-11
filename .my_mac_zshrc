@@ -46,28 +46,33 @@ function commit_link() {
 }
 
 function wifi_redirect() {
-    # Enhanced function to handle WiFi portal redirections
-    local test_url="http://down.com/"
-    local tmpfile="/tmp/wifi_redirect_headers.txt"
-    echo "Checking internet connection... 🌐"
-
-    # Use curl with -f to fail on HTTP errors and loop until successful
-    while ! curl -f -D "$tmpfile" "$test_url" >/dev/null 2>&1; do
-        echo "No internet connection detected, retrying in 1 second... ⏳"
-        sleep 1
-    done
-
-    local location_header=$(grep Location: "$tmpfile")
-    local location_url=$(echo "$location_header" | sed 's/Location: //; s/[[:space:]]//g')
-
-    # Check if the redirect URL is the same as the test URL
-    if [[ "$location_url" =~ down.com ]]; then
-        echo "Internet connection verified ✅"
-        open https://ismyinternetworking.com/
+    local check_interval=1
+    local test_url
+    if [[ -n "$1" ]]; then
+        test_url="$1"
     else
-        echo "Redirect found, opening $location_url 🔄"
-        open "$location_url"
+        test_url="http://example.com"
     fi
+
+    while true; do
+        status_code=$(curl -s -o /dev/null -w "%{http_code}" "$test_url")
+        if [[ $status_code == "000" ]]; then
+            echo "🌐 Internet connection is down. Retrying in $check_interval second... ⏳"
+            sleep $check_interval
+        elif [[ $status_code -ge 300 && $status_code -lt 400 ]]; then
+            redirect_url=$(curl -s -I "$test_url" | grep -i "Location" | awk -F' ' '{print $2}' | tr -d '\r')
+            echo "🔄 Detected a redirect, opening $redirect_url 🌐"
+            open "$redirect_url"
+            break
+        elif [[ $status_code -eq 200 ]]; then
+            echo "✅ Internet is working. Opening https://ismyinternetworking.com 🌐"
+            open "https://ismyinternetworking.com"
+            break
+        else
+            echo "❓ Unexpected response from curl: $status_code. Exiting..."
+            return
+        fi
+    done
 }
 
 ### Handle env files
