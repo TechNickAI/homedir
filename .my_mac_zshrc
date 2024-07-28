@@ -26,6 +26,7 @@ alias agp="ag -G '.py'"
 alias family_guy="find ~/Dropbox/Watch/Family\ Guy/ -type f -print0 | sort -zR | head -n 1 | xargs -0 vlc -f --play-and-exit"
 alias office="find ~/Dropbox/Watch/The\ Office/ -type f -print0 | sort -zR | head -n 1 | xargs -0 vlc -f --play-and-exit"
 alias interpreter=$HOME/.virtualenvs/interpreter/bin/interpreter
+alias aic=$HOME/.virtualenvs/aicodebot/bin/aicodebot
 
 #### Functions
 function commit_link() {
