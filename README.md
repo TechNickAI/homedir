@@ -1,6 +1,6 @@
 # Overview
 
-These are for common files in my home directory. Adds bash, vim and other functionality.
+These are for common files in my home directory.
 
 ## Install
 
