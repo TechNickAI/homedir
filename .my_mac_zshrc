@@ -1,5 +1,9 @@
 # This file contains code that is specific to OSX
 
+# Python and javascript seem to want these
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Homebrew path setup
 export HOMEBREW_BREWFILE=~/homedir/Brewfile
 if [ -f /opt/homebrew/bin/brew ]; then
@@ -26,7 +30,7 @@ alias agp="ag -G '.py'"
 alias family_guy="find ~/Dropbox/Watch/Family\ Guy/ -type f -print0 | sort -zR | head -n 1 | xargs -0 vlc -f --play-and-exit"
 alias office="find ~/Dropbox/Watch/The\ Office/ -type f -print0 | sort -zR | head -n 1 | xargs -0 vlc -f --play-and-exit"
 alias interpreter=$HOME/.virtualenvs/interpreter/bin/interpreter
-alias aic=$HOME/.virtualenvs/aicodebot/bin/aicodebot
+alias aic=$HOME/.virtualenvs/aic/bin/aicodebot
 
 #### Functions
 function commit_link() {
