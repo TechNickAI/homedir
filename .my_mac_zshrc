@@ -29,6 +29,8 @@ alias randpick='jot -r 1 1'
 alias agp="ag -G '.py'"
 alias family_guy="find ~/Dropbox/Watch/Family\ Guy/ -type f -print0 | sort -zR | head -n 1 | xargs -0 vlc -f --play-and-exit"
 alias office="find ~/Dropbox/Watch/The\ Office/ -type f -print0 | sort -zR | head -n 1 | xargs -0 vlc -f --play-and-exit"
+
+# Commands installed in virtualenvs
 alias interpreter=$HOME/.virtualenvs/interpreter/bin/interpreter
 alias aic=$HOME/.virtualenvs/aic/bin/aicodebot
 
@@ -51,6 +53,13 @@ function commit_link() {
 }
 
 function wifi_redirect() {
+    # Solves the "stuck on Wi-Fi login page" problem
+    #
+    # When connecting to public Wi-Fi networks (e.g., in cafes, hotels, airports),
+    # you often need to agree to terms or log in, but the login page doesn't always
+    # appear automatically. This function detects such situations and opens the
+    # login page for you, saving time and frustration.
+
     local check_interval=2
     local test_url
     if [[ -n "$1" ]]; then
@@ -58,7 +67,6 @@ function wifi_redirect() {
     else
         test_url="http://example.com"
     fi
-
 
     while true; do
         status_code=$(curl -s -o /dev/null -w "%{http_code}" "$test_url")
@@ -156,3 +164,5 @@ function show_env_vars() {
         fi
     done
 }
+# Add an alias for show_env_vars as browse_env_vars
+alias browse_env_vars='show_env_vars'
