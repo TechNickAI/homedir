@@ -4,7 +4,7 @@ source ~/.zshrc
 
 #############################################################
 # Daily System Update Script for macOS
-# 
+#
 # To schedule daily at 10am, add to crontab:
 # 0 10 * * * /Users/$USER/homedir/daily_update_mac.sh >> /Users/$USER/homedir/daily_update.log 2>&1
 #############################################################
