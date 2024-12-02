@@ -6,7 +6,7 @@ source ~/.zshrc
 # Daily System Update Script for macOS
 #
 # To schedule daily at 10am, add to crontab:
-# 0 10 * * * /Users/$USER/homedir/daily_update_mac.sh >> /Users/$USER/homedir/daily_update.log 2>&1
+# 0 10 * * * $HOME/homedir/daily_update_mac.sh >> $HOME/daily_update.log 2>&1
 #############################################################
 
 # Function to check if running on AC power
@@ -24,7 +24,7 @@ is_on_power() {
 echo "🚀 Starting daily system updates..."
 
 # Exit if not on power
-if is_on_power; then
+if ! is_on_power; then
     echo "\n⚠️ Not connected to power - skipping updates to save battery"
     exit 1
 fi
