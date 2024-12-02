@@ -7,13 +7,13 @@ cask "notion"
 cask "slack"
 cask "spotify"
 cask "sublime-merge"
-cask "tor-browser"
 cask "transmission"
 cask "vlc"
 cask "zoom"
 
 # Command line
 brew "bat"
+brew "pkg-config"
 brew "mackup"
 brew "the_silver_searcher" # ag
 brew "pwgen"
