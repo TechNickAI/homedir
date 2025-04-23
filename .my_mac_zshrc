@@ -36,7 +36,7 @@ alias aic=$HOME/.virtualenvs/aic/bin/aicodebot
 
 #### Functions
 function commit_link() {
-    ## Grab the latest commit from the current repo and open it on github.com
+    ## Grab the latest commit from the current repo and copy the link to the clipboard.
 
     # hash
     hash=$(git log -n 1 --format="%H")
@@ -45,11 +45,13 @@ function commit_link() {
         return
     fi
 
-    # repo owner/name
-    repo=$(git remote -v | grep github.com | head -1 | awk -F ':' '{print $2}' | perl -p -e 's/\.git.+//')
+    # repo owner/name (clean extraction)
+    remote_url=$(git remote get-url origin)
+    repo=$(echo "$remote_url" | sed -E 's#(git@github.com:|https://github.com/)([^/]+/[^.]+)(.git)?#\2#')
     url="https://github.com/$repo/commit/$hash"
-    echo "Opening latest commit on GitHub... 🔗"
-    open $url
+    echo $url
+    echo "Copied to clipboard... 📋"
+    echo $url | pbcopy
 }
 
 function wifi_redirect() {
