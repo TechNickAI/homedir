@@ -1,12 +1,13 @@
 [user]
-name = Nick Sullivan
-email = nick@sullivanflock.com
+    name = Nick Sullivan
+    email = nick@technick.ai
 username = TechNickAI
 [github]
 user = TechNickAI
 [core]
 editor = vim
 whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile = /Users/nick/.gitignore_global
 [alias]
 # Safer pulls; don't do anything other than a fast forward on merge
 pull = "pull --ff-only"
