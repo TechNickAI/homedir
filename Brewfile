@@ -12,8 +12,11 @@ cask "zoom"
 
 # Command line
 brew "bat"
+brew "btop"                 # Modern process viewer
+brew "delta"                # Beautiful git diffs
+brew "fzf"                  # Fuzzy finder for everything
 brew "pkg-config"
-brew "the_silver_searcher" # ag
+brew "the_silver_searcher"  # ag
 brew "pwgen"
 brew "watch"
 brew "wget"
