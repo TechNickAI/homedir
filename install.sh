@@ -1,6 +1,9 @@
-cd ~
+#!/usr/bin/env bash
+set -e
+
+cd ~ || exit
 git clone https://github.com/TechNickAI/homedir.git
-cd homedir
+cd homedir || exit
 
 echo
 echo "Updating the submodules (vim plugins)"
