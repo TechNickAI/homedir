@@ -253,3 +253,6 @@ clone-cryptoai() {
 
   echo "✨ Ready to work in $target_dir"
 }
+
+# Source local overrides (machine-specific, not in git)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

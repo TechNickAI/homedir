@@ -2,4 +2,5 @@
 .homedir_last_update
 .homedir_no_update
 .vim/.netrwhist
+.zshrc.local
 Brewfile.lock.json
