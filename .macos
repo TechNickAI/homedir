@@ -6,8 +6,10 @@
 #
 # Inspired by https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
-# Close any open System Preferences panes to prevent them from overriding settings
-osascript -e 'tell application "System Preferences" to quit'
+# Close any open System Preferences/Settings panes to prevent them from overriding settings
+# macOS Ventura (13.0+) renamed "System Preferences" to "System Settings"
+osascript -e 'tell application "System Preferences" to quit' 2>/dev/null
+osascript -e 'tell application "System Settings" to quit' 2>/dev/null
 
 # Ask for the administrator password upfront
 sudo -v
@@ -33,7 +35,9 @@ defaults write com.apple.screencapture location ~/Desktop/ScreenShots
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
 # Enable key repeat for Cursor (so j/k work properly in vim mode)
-defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool false
+# Older versions use todesktop bundle ID, newer versions use com.getcursor.Cursor
+defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool false 2>/dev/null
+defaults write com.getcursor.Cursor ApplePressAndHoldEnabled -bool false 2>/dev/null
 
 ###############################################################################
 # Kill affected applications                                                  #
