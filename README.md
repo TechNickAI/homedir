@@ -20,4 +20,4 @@ These are for common files in my home directory.
 
 or as a one-liner:
 
-`curl "https://raw.githubusercontent.com/TechNickAI/homedir/master/install.sh" | bash`
+`curl "https://raw.githubusercontent.com/TechNickAI/homedir/main/install.sh" | bash`
