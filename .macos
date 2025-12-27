@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# macOS System Preferences
+# Run this script to configure macOS defaults after a fresh install.
+# Safe to run multiple times (idempotent).
+#
+# Inspired by https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+
+# Close any open System Preferences panes to prevent them from overriding settings
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+###############################################################################
+# Screenshots                                                                  #
+###############################################################################
+
+# Create screenshots folder on Desktop
+mkdir -p ~/Desktop/ScreenShots
+
+# Save screenshots to the ScreenShots folder
+defaults write com.apple.screencapture location ~/Desktop/ScreenShots
+
+###############################################################################
+# Keyboard - Vim Key Repeat                                                   #
+###############################################################################
+
+# Enable key repeat for VS Code (so j/k work properly in vim mode)
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
+# Enable key repeat for Cursor (so j/k work properly in vim mode)
+defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool false
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+echo "Done. Some changes require a logout/restart to take effect."
+echo "Restart affected apps (VS Code, Cursor) for key repeat changes."
