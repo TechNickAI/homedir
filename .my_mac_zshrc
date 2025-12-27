@@ -164,3 +164,92 @@ function show_env_vars() {
 }
 # Add an alias for show_env_vars as browse_env_vars
 alias browse_env_vars='show_env_vars'
+
+#### Project Clone Functions
+
+# Smart git update: handles merged branches, uncommitted/unpushed changes
+_smart_git_update() {
+  local current_branch=$(git branch --show-current)
+
+  # Check for uncommitted changes
+  if [[ -n $(git status --porcelain) ]]; then
+    echo "⚠️  Uncommitted changes detected, staying on $current_branch"
+    return 0
+  fi
+
+  # If on main, just pull
+  if [[ "$current_branch" == "main" ]]; then
+    git pull
+    return 0
+  fi
+
+  # Fetch latest from origin
+  git fetch origin main
+
+  # Check for unpushed commits
+  local unpushed=$(git rev-list --count origin/$current_branch..$current_branch 2>/dev/null)
+  if [[ -n "$unpushed" && "$unpushed" -gt 0 ]]; then
+    echo "⚠️  Branch $current_branch has $unpushed unpushed commit(s), staying put"
+    git pull
+    return 0
+  fi
+
+  # Check if branch is merged into main
+  if git branch --merged origin/main | grep -q "^[* ] $current_branch$"; then
+    echo "✅ Branch $current_branch merged into main, switching..."
+    git checkout main && git pull
+  else
+    echo "🔄 Updating $current_branch..."
+    git pull
+  fi
+}
+
+# Clone carmenta with environment setup
+clone-carmenta() {
+  local new_name=$1
+  local source_dir="$HOME/src/carmenta"
+  local target_dir="$HOME/src/carmenta-$new_name"
+
+  if [[ -d "$target_dir" ]]; then
+    echo "📁 Directory exists, updating $new_name..."
+    cd "$target_dir" || return 1
+    _smart_git_update
+  else
+    echo "🔄 Cloning carmenta to $new_name..."
+    git clone git@github.com:carmentacollective/carmenta.git "$target_dir" || return 1
+    cd "$target_dir" || return 1
+  fi
+
+  if [[ -f "$source_dir/.env.local" ]]; then
+    echo "📋 Copying .env.local..."
+    cp "$source_dir/.env.local" .
+  fi
+
+  if [[ -d "$source_dir/.vercel" ]]; then
+    echo "📋 Syncing .vercel..."
+    rsync -a "$source_dir/.vercel/" .vercel/
+  fi
+
+  echo "📦 Installing dependencies..."
+  pnpm i
+
+  echo "✨ Ready to work in $target_dir"
+}
+
+# Clone cryptoai (Python project)
+clone-cryptoai() {
+  local new_name=$1
+  local target_dir="$HOME/src/cryptoai-$new_name"
+
+  if [[ -d "$target_dir" ]]; then
+    echo "📁 Directory exists, updating $new_name..."
+    cd "$target_dir" || return 1
+    _smart_git_update
+  else
+    echo "🔄 Cloning cryptoai to $new_name..."
+    git clone git@github.com:carmentacollective/cryptoai.git "$target_dir" || return 1
+    cd "$target_dir" || return 1
+  fi
+
+  echo "✨ Ready to work in $target_dir"
+}
