@@ -10,17 +10,15 @@ if [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Add a virtualenv to the path for each directory in ~/src
-src_contents=$(find ~/src -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
-if [[ -n "$src_contents" ]]; then
-    echo "$src_contents" | while read -r env; do
-        env_name=$(basename "$env")
-        has_venv="$HOME/.virtualenvs/$env_name"
-        if [[ -d $has_venv ]]; then
-            alias $env_name="cd ~/src/$env_name; source $has_venv/bin/activate"
-        fi
-    done
-fi
+# Create aliases for virtualenvs that have matching ~/src directories
+# Inverted loop: iterate virtualenvs (fewer) instead of src dirs (many)
+for venv in ~/.virtualenvs/*/; do
+    [[ -d "$venv" ]] || continue
+    env_name=$(basename "$venv")
+    if [[ -d ~/src/$env_name ]]; then
+        alias $env_name="cd ~/src/$env_name; source $venv/bin/activate"
+    fi
+done
 
 #### Aliases
 alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
