@@ -3,13 +3,23 @@
 # Python and virtual env
 PYTHONPYCACHEPREFIX=$HOME/.cache/python
 
-# Try to find virtualenvwrapper.sh and fail silently if not found
-VIRTUAL_ENV_WRAPPER_PATH=$(command -v virtualenvwrapper.sh 2>/dev/null)
+# virtualenvwrapper setup - try pipx first, fall back to dynamic search
+VIRTUAL_ENV_WRAPPER_PATH="$HOME/.local/bin/virtualenvwrapper.sh"
 
-if [ -n "$VIRTUAL_ENV_WRAPPER_PATH" ]; then
-    # Set up the environment variables and source the script
-    export VIRTUALENVWRAPPER_PYTHON=$(command -v python3)
-    export VIRTUALENVWRAPPER_VIRTUALENV=$(command -v virtualenv)
+# Fall back to dynamic search if not found
+if [ ! -f "$VIRTUAL_ENV_WRAPPER_PATH" ]; then
+    VIRTUAL_ENV_WRAPPER_PATH=$(command -v virtualenvwrapper.sh 2>/dev/null)
+fi
+
+if [ -f "$VIRTUAL_ENV_WRAPPER_PATH" ]; then
+    # If using pipx installation, use its Python
+    if [[ "$VIRTUAL_ENV_WRAPPER_PATH" == "$HOME/.local/bin/virtualenvwrapper.sh" ]]; then
+        export VIRTUALENVWRAPPER_PYTHON="$HOME/.local/pipx/venvs/virtualenvwrapper/bin/python"
+    else
+        # Dynamic fallback for other installations
+        export VIRTUALENVWRAPPER_PYTHON=$(command -v python3)
+    fi
+
     export WORKON_HOME="$HOME/.virtualenvs"
     source "$VIRTUAL_ENV_WRAPPER_PATH"
 fi
