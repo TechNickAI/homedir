@@ -28,7 +28,7 @@ brew "hadolint"
 brew "mysql", restart_service: true
 brew "mysql-client"
 brew "openssl@3", link: true
-brew "postgresql@14", restart_service: true
+brew "postgresql", restart_service: true
 brew "python@3.11"
 brew "python@3.12"
 brew "redis", restart_service: true
