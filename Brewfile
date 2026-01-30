@@ -29,7 +29,6 @@ brew "mysql", restart_service: true
 brew "mysql-client"
 brew "openssl@3", link: true
 brew "postgresql", restart_service: true
-brew "python@3.11"
-brew "python@3.12"
+brew "python@3.13"
 brew "redis", restart_service: true
 
