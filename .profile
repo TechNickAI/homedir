@@ -117,3 +117,8 @@ function digga() {
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 test -f ~/.extra_profile && source ~/.extra_profile
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/nick/.lmstudio/bin"
+# End of LM Studio CLI section
+
